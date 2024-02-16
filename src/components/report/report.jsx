@@ -20,6 +20,8 @@ import Button from '@mui/material/Button';
 
 import Model from 'react-modal';
 
+import '../report/report.css'
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -84,12 +86,12 @@ export default function BasicTextFields() {
   
   return (
 
-  <body>
-    <div className='container'>
+    <div className='body_report'>
+    <div className='container-report'>
     
-    <div className='fix_font'><h2>Problem report form</h2></div>
+    <div className='fix_font-report'><h2>Problem report form</h2></div>
 
-    <div className='form-control'>
+    <div className='form-control-report'>
       <FormControl  fullWidth>
       <InputLabel id="demo-simple-select-label">Problem type</InputLabel>
         <Select
@@ -107,7 +109,7 @@ export default function BasicTextFields() {
       </FormControl>  
       </div>
 
-      <div className='form-control'>
+      <div className='form-control-report'>
          <FormControl fullWidth>
         <InputLabel id="demo-multiple-chip-label">Details</InputLabel>
         <Select
@@ -139,21 +141,24 @@ export default function BasicTextFields() {
       </FormControl>
       </div>
 
-      <div className='form-control'>
+      <div className='form-control-report'>
          <TextField fullWidth label="Other details" id="outlined-basic" variant="outlined" />
       </div> 
       
-     <div className='form-control'>
+     <div className='form-control-report '>
          <Stack direction="row" spacing={1}>
-           <Button  variant="contained" color="error" >Cancel</Button>
-           <Button onClick={()=>setvisible(true)} variant="contained" color="success" type='submit'>Success</Button>
+            <Button  variant="contained" color="error" >Cancel</Button>
+            <div className='button-report'>
+            <Button onClick={()=>setvisible(true)} variant="contained" color="success" type='submit'>Success</Button>
+            </div>
          </Stack>
+       
      </div>
 
     </div> 
 
     <div>
-    <Model isOpen={visible} className='fix_position'>
+    <Model isOpen={visible} className='fix_position-report'>
         <div  className=''>
            <h1 className=''>Thanks for reporting.</h1>
         </div>
@@ -164,7 +169,7 @@ export default function BasicTextFields() {
      </div>          
             
    
-  </body>
+  </div>
   
   );
 }

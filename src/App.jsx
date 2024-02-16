@@ -5,7 +5,7 @@ import Logout from './components/logout/logout'
 import Home from './components/home/home'
 import Profile from './components/profile/profile'
 import Error from './components/error/error'
-import Register from './components/register_game/step/step'
+import Register from './components/register_game/home'
 import Report from './components/report/report'
 
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
