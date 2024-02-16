@@ -2,52 +2,55 @@ import {React} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './page.css';
 import data from '../jsonfile/game_homepage.json';
+import datas from '../jsonfile/category_page.json';
+import { colors } from '@mui/material';
+import '../text/a-box.css';
+import './page.css';
+import { useNavigate } from 'react-router';
+import Card_show from '../card/card-show';
+import Card_category from '../card/card-category';
 
-let images = data["Game_homepage"].map((item,i)=> item["image"]);
-let names = data["Game_homepage"].map((item,i)=> item["name"]);
-let details = data["Game_homepage"].map((item,i)=> item["detail"]);
+let items = data["Game_homepage"];
+let category_item = datas["Category"]
 
 const Hero = ({item}) => {
-  
+  const navigate = useNavigate();
+  const category = (event,links) => (navigate('/categories',{replace:true,state:{links}}));
   const notify = () =>toast.success('😊 Thanks for your bay!', {position: "bottom-right",autoClose: 3000,});
   const notify1 = () =>toast.warn('🧐 Good choice', {position: "bottom-right",autoClose: 3000,});
-
+  
   return (
    <div>
      <body>
-
+      <div className='bigimage-container'>
+        <img src={items[0].image}className='bigimage'></img>
+      </div>
+    
      <div className="album py-5 bg-body-tertiary">
-    <div className="container">
 
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      {images.map((item,i)=>
-      <div className="col">
-      <div className="card shadow-sm">
-        <img src={item} style={{width:'100%',height:'225px'}}></img>
-        <div className="card-body">
-          <div className='forn-cen'>{names[i]}</div>
-          <p className="card-text">{details[i]}</p>
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="btn-group">
-              <button type="button" className="btn btn-sm btn-outline-success">Buy</button>
-              <button type="button" className="btn btn-sm btn-outline-warning">Add to your wishlist</button>
-            </div>
-            <small className="text-body-secondary">2019</small>
-         
-          </div>
+        <div class="a-box" >
+          <h2><a >Category</a></h2>
         </div>
+        <div className='gameListContainer-responsive'>
+          <button type="button" onClick={event => category(event,'Action')} class="btn btn-primary">Action</button>
+          <button type="button" onClick={event => category(event,'Adventure')} class="btn btn-secondary">Adventure</button>
+          <button type="button" onClick={event => category(event,'RPG')} class="btn btn-success">RPG</button>
+          <button type="button" onClick={event => category(event,'Racing')} class="btn btn-danger">Racing</button>
+          <button type="button" onClick={event => category(event,'Cooking')} class="btn btn-warning">Cooking</button>
+          <button type="button" onClick={event => category(event,'Survival')} class="btn btn-info">Survival</button>
+          <button type="button" onClick={event => category(event,'Story')} class="btn btn-light">Story</button>
+          <button type="button" onClick={event => category(event,'Horror')} class="btn btn-dark">Horror</button>
+        </div>
+        <Card_category items={category_item}/>
+        <div class="a-box">
+          <h2>
+            <a >Trending game</a>
+          </h2>
+        </div>
+      <div className="container">  
+        <Card_show items={items}/>  
       </div>
-    </div>
-      
-    )
-    }
-        
-
-        
-      </div>
-    </div>
   </div>
 
     <footer class="text-body-secondary py-5">

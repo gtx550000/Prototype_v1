@@ -55,13 +55,13 @@ export default function TemporaryDrawer({state,setState,toggleDrawer}) {
       <Divider />
 
       <List>
-      {['Logout'].map((text) => (
+      {['Login'].map((text) => (
          <ListItem key={text} disablePadding>
             <ListItemButton href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
               <LogoutIcon sx={{ color: '#fff' }} />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Logout"} />
             </ListItemButton>
             </ListItem>
         ))}

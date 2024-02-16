@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import {useNavigate} from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,6 +18,11 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import TemporaryDrawer from '../sidebar/sidebar';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import '../navber/profile.css'
+// database get
+let profile_image = "https://cdn.pixabay.com/photo/2023/06/13/15/05/astronaut-8061095_1280.png";
+let username = "astronant";
+let id_user = "58";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -84,12 +90,15 @@ export default function PrimarySearchAppBar() {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMobileMenuClose = () => {
+  
+  const handleMobileMenuClose = (event,links) => {
+    navigate(links);
+    setAnchorEl(null);
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (event,links) => {
+    navigate(links);
     setAnchorEl(null);
     handleMobileMenuClose();
   };
@@ -114,9 +123,17 @@ export default function PrimarySearchAppBar() {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+     
+    > 
+      <MenuItem onClick={event => handleMobileMenuClose(event,'/profile')} sx={{backgroundColor:'black',mt:-1,mb:1,'&:hover': {
+          backgroundColor: '#2F2F2F'}}}>
+      <img src={profile_image} className="profiles" alt="Avatar"></img>
+      <p className='p-profiles'>{username}</p>
+      </MenuItem>
+    
+      <MenuItem onClick={event => handleMobileMenuClose(event,'/report')}>Inventory</MenuItem>
+      <MenuItem onClick={event => handleMobileMenuClose(event,'/login')}>Logout</MenuItem>
+
     </Menu>
   );
 
@@ -136,16 +153,16 @@ export default function PrimarySearchAppBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inheritr">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+      
+    > 
+    <MenuItem onClick={event => handleMobileMenuClose(event,'/profile')} sx={{backgroundColor:'black',mt:-1,mb:1,'&:hover': {
+          backgroundColor: '#2F2F2F', // Set the background color on hover
+        }}}>
+        <img src={profile_image} className="profiles" alt="Avatar"></img>
+        <p className='p-profiles'>{username}</p>
       </MenuItem>
-      <MenuItem>
+      
+      <MenuItem onClick={event => handleMobileMenuClose(event,'report')}>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -155,9 +172,9 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Inventory</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={event => handleMobileMenuClose(event,'login')}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -167,7 +184,7 @@ export default function PrimarySearchAppBar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>Logout</p>
       </MenuItem>
     </Menu>
   );
@@ -226,7 +243,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
              
-              <AccountCircle />
+             <img src={profile_image} className="profiles" alt="Avatar"></img>
             </IconButton>
           </Box>
 
@@ -239,7 +256,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon />
+              <img src={profile_image} className="profiles" alt="Avatar"></img>
             </IconButton>
           </Box>
         </Toolbar>

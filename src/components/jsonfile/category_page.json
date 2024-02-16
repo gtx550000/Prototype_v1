@@ -1,0 +1,32 @@
+{
+    "Category":[
+        {
+            "name":"Action",
+            "color":"linear-gradient(-12deg, #FF0000 0%, #C70909 75%)"
+        },
+        {
+            "name":"Horror",
+            "color":"linear-gradient(-12deg, #111111 0%, #262626 75%)"
+        },
+        {
+            "name":"RPG",
+            "color":"linear-gradient(-12deg, #2200FD 0%, #1C099A 75%)"
+        },
+        {
+            "name":"Racing",
+            "color":"linear-gradient(-12deg, #2200FD 0%, #1C099A 75%)"
+        },
+        {
+            "name":"Cooking",
+            "color":"linear-gradient(-12deg, #111111 0%, #262626 75%)"
+        },
+        {
+            "name":"Story",
+            "color":"linear-gradient(-12deg, #FF7001 0%, #D7630B 75%)"
+        },
+        {
+            "name":"Adventure",
+            "color":"linear-gradient(-12deg, #C707C1 0%, #9A0895 75%)"
+        }
+    ]
+}

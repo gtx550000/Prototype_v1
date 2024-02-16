@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-
-
+import '../error/error.css'
 
 const Error=()=>
 {
    return(
-    <div>
-        <h2>404</h2>
-        <p>Page not found เหมือน chat ที่คุยกับคนที่จีบเลย</p>
-        <Link to='/home'>back home</Link>
+    <div className="NotFoundContainer">
+      <div className="NotFoundAnimation">
+        <p>404 ERROR</p>
+        <p>Oops! Page not found.</p>
+       
+      </div>
     </div>
    )
 }
