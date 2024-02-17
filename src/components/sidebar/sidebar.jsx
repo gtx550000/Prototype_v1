@@ -1,21 +1,18 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import DeleteIcon from '@mui/icons-material/Delete';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Profile from '@mui/icons-material/AccountCircle';
+import PropTypes from 'prop-types';
 
-export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
+export default function TemporaryDrawer({ state, toggleDrawer }) {
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -90,3 +87,7 @@ export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
     </div>
   );
 }
+TemporaryDrawer.propTypes = {
+  state: PropTypes.arrayOf(PropTypes.string),
+  toggleDrawer: PropTypes.func,
+};

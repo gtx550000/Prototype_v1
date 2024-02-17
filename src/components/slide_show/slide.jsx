@@ -1,5 +1,5 @@
-import { React, useState } from 'react';
-
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import '../slide_show/slide.css';
 import { Typography } from '@mui/material';
 const Slide = ({ slides }) => {
@@ -60,5 +60,7 @@ const Slide = ({ slides }) => {
     </section>
   );
 };
-
+Slide.propTypes = {
+  slides: PropTypes.arrayOf(PropTypes.object),
+};
 export default Slide;

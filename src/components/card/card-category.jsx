@@ -1,6 +1,6 @@
-import { React } from 'react';
 import { useNavigate } from 'react-router';
 import './card-category.css';
+import PropTypes from 'prop-types';
 
 function Card_category(props) {
   const items = props.items;
@@ -8,12 +8,12 @@ function Card_category(props) {
   const categorys = (event, links) =>
     navigates('/categories', { replace: true, state: { links } });
   return (
-    <div class="gameListContainer">
+    <div className="gameListContainer">
       {items.map((item, i) => (
         <div
-          class="game"
+          className="game"
+          key={i}
           onClick={(event) => categorys(event, item.name)}
-          state={{ category: item.name }}
           style={{ background: item.color }}
         >
           <h1 className="h1-game_category">{item.name}</h1>
@@ -22,4 +22,7 @@ function Card_category(props) {
     </div>
   );
 }
+Card_category.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object.isRequired),
+};
 export default Card_category;

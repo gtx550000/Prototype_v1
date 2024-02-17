@@ -19,6 +19,7 @@
     "browser-router": "^0.2.0",
     "firebase": "^10.7.2",
     "jodit-react": "^4.0.9",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",

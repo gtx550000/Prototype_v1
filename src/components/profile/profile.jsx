@@ -1,4 +1,3 @@
-import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../profile/style.css';
@@ -58,10 +57,16 @@ const profile = () => {
                     <div className="media-body ml-4">
                       <label className="btn btn-outline-primary">
                         Upload new photo
-                        <input type="file" class="account-settings-fileinput" />
+                        <input
+                          type="file"
+                          className="account-settings-fileinput"
+                        />
                       </label>{' '}
                       &nbsp;
-                      <button type="button" class="btn btn-default md-btn-flat">
+                      <button
+                        type="button"
+                        className="btn btn-default md-btn-flat"
+                      >
                         Reset
                       </button>
                       <div className="small mt-1">
@@ -73,7 +78,11 @@ const profile = () => {
                   <div className="card-body">
                     <div className="form-group">
                       <label className="form-label">Name</label>
-                      <input type="text" class="form-control" value="Nelle" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        value="Nelle"
+                      />
                     </div>
                     <div className="form-group">
                       <label className="form-label">E-mail</label>
@@ -131,13 +140,13 @@ const profile = () => {
                           <span className="switcher-yes"></span>
                           <span className="switcher-no"></span>
                         </span>
-                        <span class="switcher-label">
+                        <span className="switcher-label">
                           Email me when someone answers on my forum thread
                         </span>
                       </label>
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                       <label className="switcher">
                         <input type="checkbox" className="switcher-input" />
                         <span className="switcher-indicator">

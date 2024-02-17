@@ -1,12 +1,9 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import '../Second/second.css';
 
@@ -34,8 +31,8 @@ export default function IntroDivider() {
               </Typography>
             </Stack>
             <Typography color="text.secondary" variant="body2">
-              Increase your game's visibility for 24 hours. Visibility of
-              100-500 people.
+              Increase your games visibility for 24 hours. Visibility of 100-500
+              people.
             </Typography>
           </Box>
           <Divider />
@@ -78,7 +75,7 @@ export default function IntroDivider() {
               </Typography>
             </Stack>
             <Typography color="text.secondary" variant="body2">
-              Increase your game's visibility for 48 hours. Visibility of
+              Increase your games visibility for 48 hours. Visibility of
               500-1000 people.
             </Typography>
           </Box>

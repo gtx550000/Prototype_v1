@@ -1,12 +1,12 @@
-import { React } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './card-show.css';
+import PropTypes from 'prop-types';
 function Card_show(props) {
   const items = props.items;
   return (
     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {items.map((item, i) => (
-        <div className="col">
+        <div className="col" key={i}>
           <div className="card shadow-sm">
             <img
               src={item.image}
@@ -39,4 +39,7 @@ function Card_show(props) {
     </div>
   );
 }
+Card_show.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object.isRequired),
+};
 export default Card_show;

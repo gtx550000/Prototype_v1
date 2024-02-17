@@ -1,30 +1,22 @@
-import { React } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import data from '../jsonfile/game_homepage.json';
+import data from '../jsonfile/game_homepage';
 import datas from '../jsonfile/category_page.json';
-import { colors } from '@mui/material';
+
 import '../text/a-box.css';
 import './page.css';
 import { useNavigate } from 'react-router';
 import Card_show from '../card/card-show';
 import Card_category from '../card/card-category';
+import PropTypes from 'prop-types';
 
 let items = data['Game_homepage'];
 let category_item = datas['Category'];
 
-const Hero = ({ item }) => {
+const Hero = () => {
   const navigate = useNavigate();
   const category = (event, links) =>
     navigate('/categories', { replace: true, state: { links } });
-  const notify = () =>
-    toast.success('😊 Thanks for your bay!', {
-      position: 'bottom-right',
-      autoClose: 3000,
-    });
-  const notify1 = () =>
-    toast.warn('🧐 Good choice', { position: 'bottom-right', autoClose: 3000 });
 
   return (
     <div>
@@ -34,7 +26,7 @@ const Hero = ({ item }) => {
         </div>
 
         <div className="album py-5 bg-body-tertiary">
-          <div class="a-box">
+          <div className="a-box">
             <h2>
               <a>Category</a>
             </h2>
@@ -43,62 +35,62 @@ const Hero = ({ item }) => {
             <button
               type="button"
               onClick={(event) => category(event, 'Action')}
-              class="btn btn-primary"
+              className="btn btn-primary"
             >
               Action
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'Adventure')}
-              class="btn btn-secondary"
+              className="btn btn-secondary"
             >
               Adventure
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'RPG')}
-              class="btn btn-success"
+              className="btn btn-success"
             >
               RPG
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'Racing')}
-              class="btn btn-danger"
+              className="btn btn-danger"
             >
               Racing
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'Cooking')}
-              class="btn btn-warning"
+              className="btn btn-warning"
             >
               Cooking
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'Survival')}
-              class="btn btn-info"
+              className="btn btn-info"
             >
               Survival
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'Story')}
-              class="btn btn-light"
+              className="btn btn-light"
             >
               Story
             </button>
             <button
               type="button"
               onClick={(event) => category(event, 'Horror')}
-              class="btn btn-dark"
+              className="btn btn-dark"
             >
               Horror
             </button>
           </div>
           <Card_category items={category_item} />
-          <div class="a-box">
+          <div className="a-box">
             <h2>
               <a>Trending game</a>
             </h2>
@@ -108,16 +100,16 @@ const Hero = ({ item }) => {
           </div>
         </div>
 
-        <footer class="text-body-secondary py-5">
-          <div class="container">
-            <p class="float-end mb-1">
+        <footer className="text-body-secondary py-5">
+          <div className="container">
+            <p className="float-end mb-1">
               <a href="#">Back to top</a>
             </p>
-            <p class="mb-1">
+            <p className="mb-1">
               Album example is &copy; Bootstrap, but please download and
               customize it for yourself!
             </p>
-            <p class="mb-0">
+            <p className="mb-0">
               Power By Bootstrap <a href="/register">Visit the homepage</a>{' '}
               Suport User : Contact Admin <a href="/report">Report Problem</a>
             </p>
@@ -126,11 +118,14 @@ const Hero = ({ item }) => {
         <script
           src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </body>
     </div>
   );
 };
 
+Hero.propTypes = {
+  item: PropTypes.arrayOf(PropTypes.object.isRequired),
+};
 export default Hero;

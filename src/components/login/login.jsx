@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Bgvideo from '../media/VN.mp4';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../login/logins.css';

@@ -1,4 +1,3 @@
-import React from 'react';
 import '../slide_show/slide_show.css'; // Make sure to create a CSS file with the contentss from your styles
 
 const SlideShow = () => {
@@ -30,15 +29,6 @@ const SlideShow = () => {
     const firstItem = document.querySelector('.slider .itemss:first-child');
     if (firstItem) {
       firstItem.parentElement.appendChild(firstItem);
-    }
-  };
-
-  // Handler for the prev button
-  const handlePrev = () => {
-    // Get the last element and prepend it to the start of the list
-    const lastItem = document.querySelector('.slider .itemss:last-child');
-    if (lastItem) {
-      lastItem.parentElement.prepend(lastItem);
     }
   };
 

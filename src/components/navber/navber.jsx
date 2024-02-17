@@ -13,9 +13,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import TemporaryDrawer from '../sidebar/sidebar';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../navber/profile.css';
@@ -23,7 +21,7 @@ import '../navber/profile.css';
 let profile_image =
   'https://cdn.pixabay.com/photo/2023/06/13/15/05/astronaut-8061095_1280.png';
 let username = 'astronant';
-let id_user = '58';
+// let id_user = '58';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
