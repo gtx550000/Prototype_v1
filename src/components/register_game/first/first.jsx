@@ -9,19 +9,18 @@ import Select from '@mui/material/Select';
 import '../first/first.css';
 import Texteditor from '../texteditor/texteditor';
 
+export default function FormPropsTextFields() {
+  const [category, setCategory] = React.useState('');
 
-export default function FormPropsTextFields()
-{
-
-    const [category, setCategory] = React.useState('');
-
-    const handleChange = (event) => {
-      setCategory(event.target.value);
-    };
-  
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
 
   return (
-    <Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '20ch' },}} style={{padding: "30px 165px 30px 30px"}}
+    <Box
+      component="form"
+      sx={{ '& .MuiTextField-root': { m: 1, width: '20ch' } }}
+      style={{ padding: '30px 165px 30px 30px' }}
       noValidate
       autoComplete="off"
     >
@@ -39,21 +38,21 @@ export default function FormPropsTextFields()
           label="Required Project URL"
           defaultValue=""
         />
-     
-        <FormControl sx={{ m: 1, minWidth: 120, }}  size="big">
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={category}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>FPS</MenuItem>
-          <MenuItem value={20}>RPG</MenuItem>
-          <MenuItem value={30}>18+</MenuItem>
-         </Select>
-         </FormControl>
+
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="big">
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={category}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>FPS</MenuItem>
+            <MenuItem value={20}>RPG</MenuItem>
+            <MenuItem value={30}>18+</MenuItem>
+          </Select>
+        </FormControl>
 
         <TextField
           required
@@ -83,22 +82,22 @@ export default function FormPropsTextFields()
           defaultValue=""
         />
 
-        <FormControl sx={{ m: 1, minWidth: 120, }}  size="big">
-        <InputLabel id="demo-simple-select-label">language</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={category}
-          label="language"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>English</MenuItem>
-          <MenuItem value={20}>Thai</MenuItem>
-          <MenuItem value={30}>China</MenuItem>
-         </Select>
-         </FormControl>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="big">
+          <InputLabel id="demo-simple-select-label">language</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={category}
+            label="language"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>English</MenuItem>
+            <MenuItem value={20}>Thai</MenuItem>
+            <MenuItem value={30}>China</MenuItem>
+          </Select>
+        </FormControl>
 
-         <TextField
+        <TextField
           required
           id="outlined-required"
           label="Required Day"
@@ -111,12 +110,9 @@ export default function FormPropsTextFields()
           label="Required Month"
           defaultValue=""
         />
+      </div>
 
-        </div>
-        
-        <Texteditor />
-      
-
+      <Texteditor />
     </Box>
   );
 }

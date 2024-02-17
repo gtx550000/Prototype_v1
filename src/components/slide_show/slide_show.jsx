@@ -12,16 +12,16 @@ const SlideShow = () => {
   ];
 
   const titles = [
-    "Lossless Youths",
-    "Estrange Bond",
-    "The Gate Keeper",
-    "Last Trace Of Us",
-    "Urban Decay",
-    "The Migration",
+    'Lossless Youths',
+    'Estrange Bond',
+    'The Gate Keeper',
+    'Last Trace Of Us',
+    'Urban Decay',
+    'The Migration',
   ];
 
   const descriptions = new Array(6).fill(
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim."
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.',
   );
 
   // Handler for the next button
@@ -44,23 +44,22 @@ const SlideShow = () => {
 
   return (
     <main>
-      <ul className='slider'>
+      <ul className="slider">
         {images.map((imgSrc, index) => (
-           <li
+          <li
             key={index}
-            className='itemss'
+            className="itemss"
             style={{ backgroundImage: `url(${imgSrc})` }}
             onClick={handleNext}
-           >
-            <div className='contentss'>
-              <h2 className='titless'>{titles[index]}</h2>
-              <p className='descriptionss'>{descriptions[index]}</p>
+          >
+            <div className="contentss">
+              <h2 className="titless">{titles[index]}</h2>
+              <p className="descriptionss">{descriptions[index]}</p>
               <button>Read More</button>
             </div>
           </li>
         ))}
       </ul>
-     
     </main>
   );
 };

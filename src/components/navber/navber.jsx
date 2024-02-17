@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,11 +18,12 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import TemporaryDrawer from '../sidebar/sidebar';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import '../navber/profile.css'
+import '../navber/profile.css';
 // database get
-let profile_image = "https://cdn.pixabay.com/photo/2023/06/13/15/05/astronaut-8061095_1280.png";
-let username = "astronant";
-let id_user = "58";
+let profile_image =
+  'https://cdn.pixabay.com/photo/2023/06/13/15/05/astronaut-8061095_1280.png';
+let username = 'astronant';
+let id_user = '58';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -74,7 +75,10 @@ export default function PrimarySearchAppBar() {
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
       return;
     }
 
@@ -90,14 +94,14 @@ export default function PrimarySearchAppBar() {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
-  const handleMobileMenuClose = (event,links) => {
+
+  const handleMobileMenuClose = (event, links) => {
     navigate(links);
     setAnchorEl(null);
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = (event,links) => {
+  const handleMenuClose = (event, links) => {
     navigate(links);
     setAnchorEl(null);
     handleMobileMenuClose();
@@ -123,17 +127,28 @@ export default function PrimarySearchAppBar() {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-     
-    > 
-      <MenuItem onClick={event => handleMobileMenuClose(event,'/profile')} sx={{backgroundColor:'black',mt:-1,mb:1,'&:hover': {
-          backgroundColor: '#2F2F2F'}}}>
-      <img src={profile_image} className="profiles" alt="Avatar"></img>
-      <p className='p-profiles'>{username}</p>
+    >
+      <MenuItem
+        onClick={(event) => handleMobileMenuClose(event, '/profile')}
+        sx={{
+          backgroundColor: 'black',
+          mt: -1,
+          mb: 1,
+          '&:hover': {
+            backgroundColor: '#2F2F2F',
+          },
+        }}
+      >
+        <img src={profile_image} className="profiles" alt="Avatar"></img>
+        <p className="p-profiles">{username}</p>
       </MenuItem>
-    
-      <MenuItem onClick={event => handleMobileMenuClose(event,'/report')}>Inventory</MenuItem>
-      <MenuItem onClick={event => handleMobileMenuClose(event,'/login')}>Logout</MenuItem>
 
+      <MenuItem onClick={(event) => handleMobileMenuClose(event, '/report')}>
+        Inventory
+      </MenuItem>
+      <MenuItem onClick={(event) => handleMobileMenuClose(event, '/login')}>
+        Logout
+      </MenuItem>
     </Menu>
   );
 
@@ -153,16 +168,23 @@ export default function PrimarySearchAppBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-      
-    > 
-    <MenuItem onClick={event => handleMobileMenuClose(event,'/profile')} sx={{backgroundColor:'black',mt:-1,mb:1,'&:hover': {
-          backgroundColor: '#2F2F2F', // Set the background color on hover
-        }}}>
+    >
+      <MenuItem
+        onClick={(event) => handleMobileMenuClose(event, '/profile')}
+        sx={{
+          backgroundColor: 'black',
+          mt: -1,
+          mb: 1,
+          '&:hover': {
+            backgroundColor: '#2F2F2F', // Set the background color on hover
+          },
+        }}
+      >
         <img src={profile_image} className="profiles" alt="Avatar"></img>
-        <p className='p-profiles'>{username}</p>
+        <p className="p-profiles">{username}</p>
       </MenuItem>
-      
-      <MenuItem onClick={event => handleMobileMenuClose(event,'report')}>
+
+      <MenuItem onClick={(event) => handleMobileMenuClose(event, 'report')}>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -174,7 +196,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Inventory</p>
       </MenuItem>
-      <MenuItem onClick={event => handleMobileMenuClose(event,'login')}>
+      <MenuItem onClick={(event) => handleMobileMenuClose(event, 'login')}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -191,7 +213,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{backgroundColor: "#566573 "}}>
+      <AppBar position="static" style={{ backgroundColor: '#566573 ' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -222,17 +244,9 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-
-          <IconButton
-              size="large"
-              
-              
-              
-              color="inherit"
-            >
-            <ShoppingCartIcon />
-
-          </IconButton>
+            <IconButton size="large" color="inherit">
+              <ShoppingCartIcon />
+            </IconButton>
             <IconButton
               size="large"
               edge="end"
@@ -242,8 +256,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-             
-             <img src={profile_image} className="profiles" alt="Avatar"></img>
+              <img src={profile_image} className="profiles" alt="Avatar"></img>
             </IconButton>
           </Box>
 
@@ -263,7 +276,11 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer}></TemporaryDrawer>
+      <TemporaryDrawer
+        state={state}
+        setState={setState}
+        toggleDrawer={toggleDrawer}
+      ></TemporaryDrawer>
     </Box>
   );
 }

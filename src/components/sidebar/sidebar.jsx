@@ -15,9 +15,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Profile from '@mui/icons-material/AccountCircle';
 
-export default function TemporaryDrawer({state,setState,toggleDrawer}) {
-  
-
+export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -26,51 +24,47 @@ export default function TemporaryDrawer({state,setState,toggleDrawer}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-
-      {['Home'].map((text) => (
-      <ListItem key={text} disablePadding>
+        {['Home'].map((text) => (
+          <ListItem key={text} disablePadding>
             <ListItemButton href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
-               <HomeIcon sx={{ color: '#fff' }} />
+                <HomeIcon sx={{ color: '#fff' }} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
-      </ListItem>     
+          </ListItem>
         ))}
       </List>
 
       <List>
-      {['Profile'].map((text) => (
-         <ListItem key={text} disablePadding>
+        {['Profile'].map((text) => (
+          <ListItem key={text} disablePadding>
             <ListItemButton href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
-              <Profile sx={{ color: '#fff' }} />
+                <Profile sx={{ color: '#fff' }} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
-            </ListItem>
+          </ListItem>
         ))}
       </List>
 
       <Divider />
 
       <List>
-      {['Login'].map((text) => (
-         <ListItem key={text} disablePadding>
+        {['Login'].map((text) => (
+          <ListItem key={text} disablePadding>
             <ListItemButton href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
-              <LogoutIcon sx={{ color: '#fff' }} />
+                <LogoutIcon sx={{ color: '#fff' }} />
               </ListItemIcon>
-              <ListItemText primary={"Logout"} />
+              <ListItemText primary={'Logout'} />
             </ListItemButton>
-            </ListItem>
+          </ListItem>
         ))}
       </List>
 
       <Divider />
-
-  
-    
     </Box>
   );
 
@@ -83,11 +77,11 @@ export default function TemporaryDrawer({state,setState,toggleDrawer}) {
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             PaperProps={{
-                sx: {
-                  backgroundColor: "#566573",
-                  color: "#fff"
-                }
-              }}
+              sx: {
+                backgroundColor: '#566573',
+                color: '#fff',
+              },
+            }}
           >
             {list(anchor)}
           </Drawer>
