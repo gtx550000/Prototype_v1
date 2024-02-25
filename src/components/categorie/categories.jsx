@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import data from '../jsonfile/game_example.json';
+import datas from '../jsonfile/game_homepage.json';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './categories.css';
@@ -10,7 +11,7 @@ import SlideShow from '../slide_show/slide_show';
 import Slide from '../slide_show/slide';
 
 let itemss = data['Game_example'];
-
+let item = datas['Game_homepage'];
 function Categories() {
   const location = useLocation();
 
@@ -41,7 +42,7 @@ function Categories() {
       <br />
       <br />
       <div className="container">
-        <Card_show className="card-shows" items={itemss} />
+        <Card_show className="card-shows" items={item} />
       </div>
     </div>
   );

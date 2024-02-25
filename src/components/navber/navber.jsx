@@ -13,7 +13,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import TemporaryDrawer from '../sidebar/sidebar';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../navber/profile.css';
@@ -142,10 +142,27 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
 
       <MenuItem onClick={(event) => handleMobileMenuClose(event, '/report')}>
-        Inventory
+        <IconButton size="large" color="inherit">
+          <InventoryIcon />
+        </IconButton>
+        <p>Inventory</p>
+      </MenuItem>
+      <MenuItem onClick={(event) => handleMobileMenuClose(event, '/cart')}>
+        <IconButton
+          size="large"
+          //aria-label="show  new notifications"
+          color="inherit"
+        >
+          {' '}
+          <ShoppingCartIcon />
+        </IconButton>
+        <p>Cart</p>
       </MenuItem>
       <MenuItem onClick={(event) => handleMobileMenuClose(event, '/login')}>
-        Logout
+        <IconButton size="large" color="inherit">
+          <AccountCircle />
+        </IconButton>
+        <p>Log out</p>
       </MenuItem>
     </Menu>
   );
@@ -185,14 +202,20 @@ export default function PrimarySearchAppBar() {
       <MenuItem onClick={(event) => handleMobileMenuClose(event, 'report')}>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          //aria-label="show  new notifications"
           color="inherit"
         >
           <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+            <InventoryIcon />
           </Badge>
         </IconButton>
         <p>Inventory</p>
+      </MenuItem>
+      <MenuItem onClick={(event) => handleMobileMenuClose(event, '/cart')}>
+        <IconButton size="large" color="inherit">
+          <ShoppingCartIcon />
+        </IconButton>
+        <p>Cart</p>
       </MenuItem>
       <MenuItem onClick={(event) => handleMobileMenuClose(event, 'login')}>
         <IconButton
@@ -242,7 +265,11 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" color="inherit">
+            <IconButton
+              onClick={(event) => handleMobileMenuClose(event, '/cart')}
+              size="large"
+              color="inherit"
+            >
               <ShoppingCartIcon />
             </IconButton>
             <IconButton
