@@ -8,6 +8,8 @@ import Report from './components/report/report';
 import Login from './components/login/login';
 import Categories from './components/categorie/categories';
 import Cart from './components/cart/cart';
+import Gamedetail from './components/gamedetail/gamedetail';
+import Forgot_password from './components/forgot_password/forgot_password';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -28,6 +30,8 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/categories" element={<Categories />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/gamedetail" element={<Gamedetail />}></Route>
+          <Route path="/forgotpassword" element={<Forgot_password />}></Route>
         </Routes>
       </div>
     </Router>
