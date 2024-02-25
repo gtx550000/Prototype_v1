@@ -12,7 +12,7 @@ import Third from '../third/third';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Arrangement'];
+const steps = ['Select campaign settings', 'Boost view', 'Arrangement'];
 
 export default function HorizontalNonLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
