@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import Bgvideo from '../media/VN.mp4';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../login/logins.css';
+import { useState } from "react";
+import Bgvideo from "../media/VN.mp4";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../login/logins.css";
 
 function Login() {
   const [isContainerActive, setContainerActive] = useState(false);
@@ -18,7 +18,7 @@ function Login() {
         </video>
 
         <div
-          className={`container-login ${isContainerActive ? 'active' : ''}`}
+          className={`container-login ${isContainerActive ? "active" : ""}`}
           id="container"
         >
           <div className="form-container-login sign-up-login">
@@ -38,7 +38,7 @@ function Login() {
               <span>or use your email password</span>
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
-              <a href="#">Forget Your Password?</a>
+              <a href="/forgot_password">Forget Your Password?</a>
               <button>Sign In</button>
               <div>
                 <button>Google</button>

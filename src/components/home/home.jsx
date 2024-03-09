@@ -1,28 +1,30 @@
-import 'react-toastify/dist/ReactToastify.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import data from '../jsonfile/game_homepage';
-import datas from '../jsonfile/category_page.json';
+import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import data from "../jsonfile/game_homepage";
+import datas from "../jsonfile/category_page.json";
 
-import '../text/a-box.css';
-import './page.css';
-import { useNavigate } from 'react-router';
-import Card_show from '../card/card-show';
-import Card_category from '../card/card-category';
-import PropTypes from 'prop-types';
+import "../text/a-box.css";
+import "./page.css";
+import { useNavigate } from "react-router";
+import Card_show from "../card/card-show";
+import Card_category from "../card/card-category";
+import PropTypes from "prop-types";
 
-let items = data['Game_homepage'];
-let category_item = datas['Category'];
+/*7/3/24 */
+
+let items = data["Game_homepage"];
+let category_item = datas["Category"];
 
 const Hero = () => {
   const navigate = useNavigate();
   const category = (event, links) =>
-    navigate('/categories', { replace: true, state: { links } });
+    navigate("/categories", { replace: true, state: { links } });
 
   return (
     <div>
       <body>
         <div className="bigimage-container">
-          <img src={items[0].image} className="bigimage"></img>
+          <img className="bigimage" src={items[0].image} />
         </div>
 
         <div className="album py-5 bg-body-tertiary">
@@ -34,56 +36,56 @@ const Hero = () => {
           <div className="gameListContainer-responsive">
             <button
               type="button"
-              onClick={(event) => category(event, 'Action')}
+              onClick={(event) => category(event, "Action")}
               className="btn btn-primary"
             >
               Action
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'Adventure')}
+              onClick={(event) => category(event, "Adventure")}
               className="btn btn-secondary"
             >
               Adventure
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'RPG')}
+              onClick={(event) => category(event, "RPG")}
               className="btn btn-success"
             >
               RPG
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'Racing')}
+              onClick={(event) => category(event, "Racing")}
               className="btn btn-danger"
             >
               Racing
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'Cooking')}
+              onClick={(event) => category(event, "Cooking")}
               className="btn btn-warning"
             >
               Cooking
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'Survival')}
+              onClick={(event) => category(event, "Survival")}
               className="btn btn-info"
             >
               Survival
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'Story')}
+              onClick={(event) => category(event, "Story")}
               className="btn btn-light"
             >
               Story
             </button>
             <button
               type="button"
-              onClick={(event) => category(event, 'Horror')}
+              onClick={(event) => category(event, "Horror")}
               className="btn btn-dark"
             >
               Horror
@@ -106,12 +108,20 @@ const Hero = () => {
               <a href="#">Back to top</a>
             </p>
             <p className="mb-1">
-              Album example is &copy; Bootstrap, but please download and
+              Album example is &copy; Bootstrap, Power By Bootstrap and
               customize it for yourself!
             </p>
             <p className="mb-0">
-              Power By Bootstrap <a href="/register">Visit the homepage</a>{' '}
-              Suport User : Contact Admin <a href="/report">Report Problem</a>
+              {" "}
+              Register game :
+              <a href="/register" className="font-coloer-home ">
+                Register page
+              </a>
+              ,Suport User : Contact Admin -
+              <a href="/report" className="font-coloer-home ">
+                {" "}
+                Report Problem{" "}
+              </a>
             </p>
           </div>
         </footer>

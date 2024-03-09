@@ -1,141 +1,85 @@
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import '../Second/second.css';
+import * as React from "react";
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import "../second/second.css";
 
-export default function IntroDivider() {
+export default function FormPropsTextFields1() {
+  const [category, setCategory] = React.useState("");
+
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
+
   return (
-    <div>
-      <div className="second">
-        <Card
-          variant="outlined"
-          sx={{ m: 1.5, maxWidth: 360 }}
-          style={{ padding: '10px 30px 10px 30px' }}
-          className="center"
-        >
-          <Box sx={{ p: 2, width: 'content' }}>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
+    <div className="rsponsive">
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": {
+            m: 1,
+            width: "25ch",
+            bottom: "-1.5ch ",
+            "@media (max-width: 550px)": {
+              width: "100%",
+              width: "100%",
+              right: "auto",
+            },
+          },
+        }}
+        /*style={{ padding: "30px 30px 30px 5px" }}*/
+        noValidate
+        autoComplete="off"
+      >
+        <div>
+          <TextField
+            required
+            id="outlined-required"
+            label="Required Discount"
+            defaultValue=""
+          />
+
+          <TextField
+            required
+            id="outlined-required"
+            label="Required URL Video"
+            defaultValue=""
+          />
+
+          <FormControl
+            sx={{
+              m: 1,
+              width: "25ch",
+              bottom: "-1.5ch ",
+              "@media (max-width: 550px)": {
+                width: "100%",
+                width: "100%",
+                right: "auto",
+              },
+            }}
+            size="big"
+          >
+            <InputLabel id="demo-simple-select-label">
+              Required Category
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={category}
+              label="Age"
+              onChange={handleChange}
             >
-              <Typography gutterBottom variant="h5" component="div">
-                Standard Edition
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                $5.50
-              </Typography>
-            </Stack>
-            <Typography color="text.secondary" variant="body2">
-              Increase your games visibility for 24 hours. Visibility of 100-500
-              people.
-            </Typography>
-          </Box>
-          <Divider />
-          <Box sx={{ p: 2 }}>
-            <Typography gutterBottom variant="body2">
-              Select type
-            </Typography>
-
-            <FormControlLabel
-              required
-              control={<Checkbox />}
-              label="Standard"
-            />
-            <FormControlLabel
-              disabled
-              control={<Checkbox />}
-              label=" *+0.50 Deluxe Edition* "
-            />
-          </Box>
-        </Card>
-      </div>
-
-      <div>
-        <Card
-          variant="outlined"
-          sx={{ m: 1.5, maxWidth: 360 }}
-          style={{ padding: '10px 30px 30px 30px' }}
-        >
-          <Box sx={{ p: 2 }}>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Typography gutterBottom variant="h5" component="div">
-                Deluxe Edition
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                $10.50
-              </Typography>
-            </Stack>
-            <Typography color="text.secondary" variant="body2">
-              Increase your games visibility for 48 hours. Visibility of
-              500-1000 people.
-            </Typography>
-          </Box>
-          <Divider />
-          <Box sx={{ p: 2 }}>
-            <Typography gutterBottom variant="body2">
-              Select type
-            </Typography>
-
-            <FormControlLabel required control={<Checkbox />} label="Deluxe" />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="+0.50 free 1 hours"
-            />
-          </Box>
-        </Card>
-      </div>
-
-      <div>
-        <Card
-          variant="outlined"
-          sx={{ m: 1.5, maxWidth: 360 }}
-          style={{ padding: '10px 30px 30px 30px' }}
-        >
-          <Box sx={{ p: 2 }}>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Typography gutterBottom variant="h5" component="div">
-                Ultimate Edition
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                $30.50
-              </Typography>
-            </Stack>
-            <Typography color="text.secondary" variant="body2">
-              Your game will be ranked among the top new games. for 48 hours.
-              Visibility of 1000-1500 people.
-            </Typography>
-          </Box>
-          <Divider />
-          <Box sx={{ p: 2 }}>
-            <Typography gutterBottom variant="body2">
-              Select type
-            </Typography>
-
-            <FormControlLabel
-              required
-              control={<Checkbox />}
-              label="Ultimate"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="+0.50 free 1 hours"
-            />
-          </Box>
-        </Card>
-      </div>
+              <MenuItem value={10}>FPS</MenuItem>
+              <MenuItem value={20}>RPG</MenuItem>
+              <MenuItem value={30}>18+</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+      </Box>
     </div>
   );
 }

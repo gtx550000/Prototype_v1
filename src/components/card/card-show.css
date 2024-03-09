@@ -8,7 +8,7 @@
 .shadow-sm:hover {
   background-color: #22262b;
   color: whitesmoke;
-  transform: scale(1.3);
+  transform: scale(1.05);
   z-index: 2;
 }
 .btn {

@@ -7,6 +7,8 @@
   padding: 0;
   font-family: arial, sans-serif;
   overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 img {
@@ -35,7 +37,7 @@ a:hover {
 .body-cart button::after {
   position: relative;
   right: 0;
-  content: ' \276f';
+  content: " \276f";
   transition: all 0.15s linear;
 }
 
@@ -62,8 +64,8 @@ a:hover {
   transition: all 0.25s linear;
 }
 
-.body-cart input[type='number']::-webkit-inner-spin-button,
-.body-cart input[type='number']::-webkit-outer-spin-button {
+.body-cart input[type="number"]::-webkit-inner-spin-button,
+.body-cart input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -101,7 +103,7 @@ a:hover {
 }
 
 .body-cart header .breadcrumb li:not(:last-child)::after {
-  content: ' \276f';
+  content: " \276f";
   padding-left: 8px;
 }
 
@@ -250,7 +252,7 @@ a:hover {
 }
 
 .body-cart .promotion > button::after {
-  content: '\276f';
+  content: "\276f";
   font-size: 1rem;
 }
 

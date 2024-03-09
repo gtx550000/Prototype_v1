@@ -1,6 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './card-show.css';
-import PropTypes from 'prop-types';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./card-show.css";
+
+import PropTypes from "prop-types";
 function Card_show(props) {
   const items = props.items;
   return (
@@ -10,7 +11,7 @@ function Card_show(props) {
           <div className="card shadow-sm">
             <img
               src={item.image}
-              style={{ width: '100%', height: '225px' }}
+              style={{ width: "100%", height: "225px" }}
             ></img>
             <div className="card-body">
               <div className="forn-cen">{item.name}</div>
@@ -23,11 +24,21 @@ function Card_show(props) {
                   >
                     Buy
                   </button>
+
                   <button
                     type="button"
                     className="btn btn-sm btn-outline-warning"
                   >
                     Add to your wishlist
+                  </button>
+
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline-primary"
+                  >
+                    <div>
+                      <a href="/gamedetail">View game</a>
+                    </div>
                   </button>
                 </div>
                 <small className="text-body-secondary">2019</small>

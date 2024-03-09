@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import '../cart/cart.css';
-import data from '../jsonfile/game_example.json';
+import { useState } from "react";
+import "../cart/cart.css";
+import data from "../jsonfile/game_example.json";
 
 function ShoppingCart() {
-  let items = data['Game_example'];
+  let items = data["Game_example"];
   const [products, setProducts] = useState(items);
   const [tax] = useState(5);
   const [promotions] = useState([
-    { code: 'SUMMER', discount: '50%' },
-    { code: 'AUTUMN', discount: '40%' },
-    { code: 'WINTER', discount: '30%' },
+    { code: "SUMMER", discount: "50%" },
+    { code: "AUTUMN", discount: "40%" },
+    { code: "WINTER", discount: "30%" },
   ]);
-  const [promoCode, setPromoCode] = useState('');
+  const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
 
   const itemCount = products.reduce(
     (count, product) => count + parseInt(product.length) || 0,
-    0,
+    0
   );
   const subTotal = products.reduce(
     (total, product) => total + parseFloat(product.price),
-    0,
+    0
   );
   const discountPrice = (subTotal * discount) / 100;
   const totalPrice = subTotal - discountPrice + tax;
@@ -34,12 +34,12 @@ function ShoppingCart() {
   const checkPromoCode = () => {
     for (let i = 0; i < promotions.length; i++) {
       if (promoCode === promotions[i].code) {
-        setDiscount(parseFloat(promotions[i].discount.replace('%', '')));
+        setDiscount(parseFloat(promotions[i].discount.replace("%", "")));
         return;
       }
     }
 
-    alert('Sorry, the Promotional code you entered is not valid!');
+    alert("Sorry, the Promotional code you entered is not valid!");
   };
 
   return (
@@ -51,6 +51,7 @@ function ShoppingCart() {
           <ul className="breadcrumb">
             <li>Home</li>
             <li>Shopping Cart</li>
+            <li>Price includes tax</li>
           </ul>
           <span className="count">{itemCount} items in the bag</span>
         </header>
@@ -72,9 +73,9 @@ function ShoppingCart() {
                       </div>
 
                       <div className="price">
-                        {product.price.toLocaleString('en-US', {
-                          style: 'currency',
-                          currency: 'USD',
+                        {product.price.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
                         })}
                       </div>
                     </div>
@@ -100,58 +101,43 @@ function ShoppingCart() {
         {/* Summary */}
         <section className="container">
           {products.length > 0 && (
-            <div className="promotion">
-              <label htmlFor="promo-code">Have A Promo Code?</label>
-              <input
-                type="text"
-                id="promo-code"
-                value={promoCode}
-                onChange={(event) => setPromoCode(event.target.value)}
-              />
-              <button type="button" onClick={checkPromoCode}>
-                Apply Promo Code
-              </button>
-            </div>
-          )}
-
-          {products.length > 0 && (
             <div className="summary">
               <ul>
                 <li>
-                  Subtotal{' '}
+                  Subtotal{" "}
                   <span>
-                    {subTotal.toLocaleString('en-US', {
-                      style: 'currency',
-                      currency: 'USD',
+                    {subTotal.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
                     })}
                   </span>
                 </li>
                 {discount > 0 && (
                   <li>
-                    Discount{' '}
+                    Discount{" "}
                     <span>
-                      {discountPrice.toLocaleString('en-US', {
-                        style: 'currency',
-                        currency: 'USD',
+                      {discountPrice.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
                       })}
                     </span>
                   </li>
                 )}
                 <li>
-                  Tax{' '}
+                  Tax{" "}
                   <span>
-                    {tax.toLocaleString('en-US', {
-                      style: 'currency',
-                      currency: 'USD',
+                    {tax.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
                     })}
                   </span>
                 </li>
                 <li className="total">
-                  Total{' '}
+                  Total{" "}
                   <span>
-                    {totalPrice.toLocaleString('en-US', {
-                      style: 'currency',
-                      currency: 'USD',
+                    {totalPrice.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
                     })}
                   </span>
                 </li>
@@ -166,7 +152,7 @@ function ShoppingCart() {
           )}
         </section>
         {/* End Summary */}
-      </div>{' '}
+      </div>{" "}
     </div>
   );
 }

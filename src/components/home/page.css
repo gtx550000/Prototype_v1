@@ -253,3 +253,8 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     margin: 2rem auto;
   }
 }
+
+/*25/2/64*/
+.font-coloer-home {
+  color: #26b4ff;
+}

@@ -1,17 +1,19 @@
-import ButtonAppBar from './components/navber/navber';
-import Logout from './components/logout/logout';
-import Home from './components/home/home';
-import Profile from './components/profile/profile';
-import Error from './components/error/error';
-import Register from './components/register_game/home';
-import Report from './components/report/report';
-import Login from './components/login/login';
-import Categories from './components/categorie/categories';
-import Cart from './components/cart/cart';
-import Gamedetail from './components/gamedetail/gamedetail';
-import Forgot_password from './components/forgot_password/forgot_password';
+import ButtonAppBar from "./components/navber/navber";
+import Logout from "./components/logout/logout";
+import Home from "./components/home/home";
+import Profile from "./components/profile/profile";
+import Error from "./components/error/error";
+import Register from "./components/register_game/home";
+import Report from "./components/report/report";
+import Login from "./components/login/login";
+import Categories from "./components/categorie/categories";
+import Cart from "./components/cart/cart";
+import Forgot_password from "./components/forgot_password/forgot_password";
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Gamedetail from "./components/gamedetail/gamedetail";
+import Slideshowgamedetail from "./components/slideshowgamedetail/slideshowgamedetail";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -19,19 +21,22 @@ function App() {
       <div>
         <ButtonAppBar></ButtonAppBar>
         <Routes>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="*" element={<Error />}></Route>
-          <Route path="/register" element={<Register />}>
-            {' '}
-          </Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/report" element={<Report />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/categories" element={<Categories />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/forgot_password" element={<Forgot_password />}></Route>
           <Route path="/gamedetail" element={<Gamedetail />}></Route>
-          <Route path="/forgotpassword" element={<Forgot_password />}></Route>
+          <Route
+            path="/slideshowgamedetail"
+            element={<Slideshowgamedetail />}
+          ></Route>
         </Routes>
       </div>
     </Router>

@@ -1,17 +1,17 @@
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import '../profile/style.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../profile/style.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const profile = () => {
   const notify = () =>
-    toast.success('😉 Wow so easy!', {
-      position: 'bottom-right',
+    toast.success("😉 Wow so easy!", {
+      position: "bottom-right",
       autoClose: 3000,
     });
   const notify1 = () =>
-    toast.error('😨 Sorry bro', { position: 'bottom-right', autoClose: 3000 });
+    toast.error("😨 Sorry bro", { position: "bottom-right", autoClose: 3000 });
 
   return (
     <body>
@@ -35,13 +35,6 @@ const profile = () => {
                 >
                   Change password
                 </a>
-                <a
-                  className="list-group-item list-group-item-action"
-                  data-toggle="list"
-                  href="#account-notifications"
-                >
-                  Notifications
-                </a>
               </div>
             </div>
 
@@ -61,7 +54,7 @@ const profile = () => {
                           type="file"
                           className="account-settings-fileinput"
                         />
-                      </label>{' '}
+                      </label>{" "}
                       &nbsp;
                       <button
                         type="button"
@@ -113,101 +106,6 @@ const profile = () => {
                     <div className="form-group">
                       <label className="form-label">Repeat new password</label>
                       <input type="password" className="form-control" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="tab-pane fade" id="account-notifications">
-                  <div className="card-body pb-2">
-                    <h6 className="mb-4">Activity</h6>
-                    <div className="form-group">
-                      <label className="switcher">
-                        <input type="checkbox" className="switcher-input" />
-                        <span className="switcher-indicator">
-                          <span className="switcher-yes"></span>
-                          <span className="switcher-no"></span>
-                        </span>
-                        <span className="switcher-label">
-                          Email me when someone comments on my article
-                        </span>
-                      </label>
-                    </div>
-
-                    <div className="form-group">
-                      <label className="switcher">
-                        <input type="checkbox" className="switcher-input" />
-                        <span className="switcher-indicator">
-                          <span className="switcher-yes"></span>
-                          <span className="switcher-no"></span>
-                        </span>
-                        <span className="switcher-label">
-                          Email me when someone answers on my forum thread
-                        </span>
-                      </label>
-                    </div>
-
-                    <div className="form-group">
-                      <label className="switcher">
-                        <input type="checkbox" className="switcher-input" />
-                        <span className="switcher-indicator">
-                          <span className="switcher-yes"></span>
-                          <span className="switcher-no"></span>
-                        </span>
-                        <span className="switcher-label">
-                          Email me when someone follows me
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <hr className="border-light m-0" />
-                  <div className="card-body pb-2">
-                    <h6 className="mb-4">Application</h6>
-                    <div className="form-group">
-                      <label className="switcher">
-                        <input
-                          type="checkbox"
-                          className="switcher-input"
-                          checked
-                        />
-                        <span className="switcher-indicator">
-                          <span className="switcher-yes"></span>
-                          <span className="switcher-no"></span>
-                        </span>
-                        <span className="switcher-label">
-                          News and announcements
-                        </span>
-                      </label>
-                    </div>
-
-                    <div className="form-group">
-                      <label className="switcher">
-                        <input type="checkbox" className="switcher-input" />
-                        <span className="switcher-indicator">
-                          <span className="switcher-yes"></span>
-                          <span className="switcher-no"></span>
-                        </span>
-                        <span className="switcher-label">
-                          Weekly product updates
-                        </span>
-                      </label>
-                    </div>
-
-                    <div className="form-group">
-                      <label className="switcher">
-                        <input
-                          type="checkbox"
-                          className="switcher-input"
-                          checked
-                        />
-                        <span className="switcher-indicator">
-                          <span className="switcher-yes"></span>
-                          <span className="switcher-no"></span>
-                        </span>
-                        <span className="switcher-label">
-                          Weekly blog digest
-                        </span>
-                      </label>
                     </div>
                   </div>
                 </div>

@@ -1,18 +1,18 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepButton from '@mui/material/StepButton';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import First from '../first/first';
-import Second from '../Second/Second';
-import Third from '../third/third';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepButton from "@mui/material/StepButton";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import First from "../first/first";
+import Second from "../Second/Second";
+import Third from "../third/third";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const steps = ['Select campaign settings', 'Boost view', 'Arrangement'];
+const steps = ["Select campaign settings", "Arrangement"];
 
 export default function HorizontalNonLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -46,7 +46,7 @@ export default function HorizontalNonLinearStepper() {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    toast.warn('🤧  Let me check on that.');
+    toast.warn("🤧  Let me check on that.");
   };
 
   const handleStep = (step) => () => {
@@ -58,7 +58,7 @@ export default function HorizontalNonLinearStepper() {
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
     handleNext();
-    toast.success('🦄 Nice bro!');
+    toast.success("🦄 Nice bro!");
   };
 
   const handleReset = () => {
@@ -67,7 +67,7 @@ export default function HorizontalNonLinearStepper() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: "100%" }}>
       <Stepper nonLinear activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
@@ -83,19 +83,19 @@ export default function HorizontalNonLinearStepper() {
             <Typography sx={{ mt: 2, mb: 1 }}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
+            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+              <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleReset}>Reset</Button>
             </Box>
           </React.Fragment>
         ) : (
           <React.Fragment>
             {activeStep === 0 && <First />}
-            {activeStep === 1 && <Second />}
-            {activeStep === 2 && <Third />}
+            {/**  {activeStep === 1 && <Second />}*/}
+            {activeStep === 1 && <Third />}
             {/*<Typography sx={{ mt: 2, mb: 1, py: 1 }}>Step {activeStep + 1}</Typography>*/}
 
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <div>
                 <Button
                   color="inherit"
@@ -107,7 +107,7 @@ export default function HorizontalNonLinearStepper() {
                 </Button>
               </div>
 
-              <Box sx={{ flex: '1 1 auto' }} />
+              <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleNext} sx={{ mr: 1 }}>
                 Next
               </Button>
@@ -115,7 +115,7 @@ export default function HorizontalNonLinearStepper() {
                 (completed[activeStep] ? (
                   <Typography
                     variant="caption"
-                    sx={{ display: 'inline-block' }}
+                    sx={{ display: "inline-block" }}
                   >
                     <div>Step {activeStep + 1} already completed</div>
                   </Typography>
@@ -123,8 +123,8 @@ export default function HorizontalNonLinearStepper() {
                   <div>
                     <Button onClick={handleComplete}>
                       {completedSteps() === totalSteps() - 1
-                        ? 'Finish'
-                        : 'Complete Step'}
+                        ? "Finish"
+                        : "Complete Step"}
                     </Button>
                     <ToastContainer />
                   </div>
