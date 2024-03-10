@@ -1,3 +1,4 @@
+import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../profile/style.css";
@@ -17,7 +18,7 @@ const profile = () => {
     <body>
       <div className="container light-style flex-grow-1 container-p-y">
         <h4 className="font-weight-bold py-3 mb-4">Account settings</h4>
-        <div className="card overflow-hidden profile">
+        <div className="card overflow-hidden">
           <div className="row no-gutters row-bordered row-border-light">
             <div className="col-md-3 pt-0">
               <div className="list-group list-group-flush account-settings-links">
@@ -35,6 +36,22 @@ const profile = () => {
                 >
                   Change password
                 </a>
+
+                <a
+                  className="list-group-item list-group-item-action"
+                  data-toggle="list"
+                  href="#account-change-username"
+                >
+                  Change user
+                </a>
+
+                <a
+                  className="list-group-item list-group-item-action"
+                  data-toggle="list"
+                  href="#account-change-telephonenumber"
+                >
+                  Change Telephone number
+                </a>
               </div>
             </div>
 
@@ -50,16 +67,10 @@ const profile = () => {
                     <div className="media-body ml-4">
                       <label className="btn btn-outline-primary">
                         Upload new photo
-                        <input
-                          type="file"
-                          className="account-settings-fileinput"
-                        />
+                        <input type="file" class="account-settings-fileinput" />
                       </label>{" "}
                       &nbsp;
-                      <button
-                        type="button"
-                        className="btn btn-default md-btn-flat"
-                      >
+                      <button type="button" class="btn btn-default md-btn-flat">
                         Reset
                       </button>
                       <div className="small mt-1">
@@ -71,11 +82,7 @@ const profile = () => {
                   <div className="card-body">
                     <div className="form-group">
                       <label className="form-label">Name</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        value="Nelle"
-                      />
+                      <input type="text" class="form-control" value="Nelle" />
                     </div>
                     <div className="form-group">
                       <label className="form-label">E-mail</label>
@@ -105,6 +112,47 @@ const profile = () => {
                     </div>
                     <div className="form-group">
                       <label className="form-label">Repeat new password</label>
+                      <input type="password" className="form-control" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="tab-pane fade" id="account-change-username">
+                  <div className="card-body pb-2">
+                    <div className="form-group">
+                      <label className="form-label">Current username</label>
+                      <input type="text" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">New username</label>
+                      <input type="password" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">Repeat new username</label>
+                      <input type="password" className="form-control" />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="tab-pane fade"
+                  id="account-change-telephonenumber"
+                >
+                  <div className="card-body pb-2">
+                    <div className="form-group">
+                      <label className="form-label">
+                        Current telephonenumber
+                      </label>
+                      <input type="text" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">New telephonenumber</label>
+                      <input type="password" className="form-control" />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">
+                        Repeat new telephonenumber
+                      </label>
                       <input type="password" className="form-control" />
                     </div>
                   </div>

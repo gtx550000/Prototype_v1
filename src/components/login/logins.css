@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 .body-login {
   /*background-image:url('bg2.png');*/
@@ -11,7 +11,7 @@
   padding: 0;
   margin-bottom: -5%;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .container-login {
@@ -21,8 +21,8 @@
   position: relative;
   overflow: hidden;
   width: 768px;
-  max-width: 100%;
-  min-height: 480px;
+  max-width: 90%;
+  min-height: 500px;
 }
 
 .container-login p {

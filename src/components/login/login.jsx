@@ -26,6 +26,8 @@ function Login() {
               <h1>Create Account</h1>
               <span>or use your email for registration</span>
               <input type="text" placeholder="Name" />
+              <input type="text" placeholder="User name" required />
+              <input type="tel" placeholder="telephone number" required />
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
               <button>Sign Up</button>
