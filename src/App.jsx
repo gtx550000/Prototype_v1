@@ -13,6 +13,8 @@ import Forgot_password from "./components/forgot_password/forgot_password";
 import Gamedetail from "./components/gamedetail/gamedetail";
 import Slideshowgamedetail from "./components/slideshowgamedetail/slideshowgamedetail";
 
+/*11/3/24*/ import Library from "./components/library/library";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
           <Route path="/logout" element={<Logout />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/library" element={<Library />}></Route>
           <Route path="*" element={<Error />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/report" element={<Report />}></Route>
