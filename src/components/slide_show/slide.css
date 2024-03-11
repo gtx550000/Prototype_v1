@@ -78,6 +78,9 @@
   .container-content button {
     padding: 0.5rem 1rem; /* Smaller padding on small screens */
   }
+  .image {
+    height: 250px;
+  }
 }
 
 @media (max-width: 480px) {

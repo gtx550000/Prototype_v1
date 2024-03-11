@@ -259,6 +259,7 @@ a:hover {
 .body-cart .summary {
   font-size: 1.2rem;
   text-align: right;
+  margin-left: 40%;
 }
 
 .body-cart .summary ul li {
@@ -309,6 +310,9 @@ a:hover {
   .body-cart .remove svg {
     width: 40px;
     height: 40px;
+  }
+  .body-cart .summary {
+    margin-left: 0%;
   }
 }
 

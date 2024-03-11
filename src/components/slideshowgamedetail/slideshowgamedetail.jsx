@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../slideshowgamedetail/slideshowgamedetail.css";
-import data from "../jsonfile/game_homepage.json";
 
-const Slideshow = () => {
-  let items = data["Game_homepage"];
+const Slideshow = (props) => {
+  let items = props.items;
   const delay = 2500;
 
   const [index, setIndex] = useState(0);

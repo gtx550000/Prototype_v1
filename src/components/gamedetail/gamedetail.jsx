@@ -1,5 +1,7 @@
 import "../gamedetail/gamedetail.css";
 import Slide_show from "../slideshowgamedetail/slideshowgamedetail";
+import data from "../jsonfile/game_homepage.json";
+const game_homepage = data["Game_homepage"];
 function Gamedetail() {
   return (
     <body>
@@ -7,7 +9,12 @@ function Gamedetail() {
         <div className="container px-4 px-lg-5 my-5">
           <div className="row gx-4 gx-lg-5 align-items-center">
             <div className="col-md-6">
-              <Slide_show height="100px" width="100px" h="10px" />
+              <Slide_show
+                height="100px"
+                width="100px"
+                h="10px"
+                items={game_homepage}
+              />
             </div>
             <div className="col-md-6">
               <h1 className="display-5 fw-bolder">game</h1>

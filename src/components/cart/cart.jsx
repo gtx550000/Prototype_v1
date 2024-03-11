@@ -5,14 +5,6 @@ import data from "../jsonfile/game_example.json";
 function ShoppingCart() {
   let items = data["Game_example"];
   const [products, setProducts] = useState(items);
-  const [tax] = useState(5);
-  const [promotions] = useState([
-    { code: "SUMMER", discount: "50%" },
-    { code: "AUTUMN", discount: "40%" },
-    { code: "WINTER", discount: "30%" },
-  ]);
-  const [promoCode, setPromoCode] = useState("");
-  const [discount, setDiscount] = useState(0);
 
   const itemCount = products.reduce(
     (count, product) => count + parseInt(product.length) || 0,
@@ -22,24 +14,13 @@ function ShoppingCart() {
     (total, product) => total + parseFloat(product.price),
     0
   );
-  const discountPrice = (subTotal * discount) / 100;
-  const totalPrice = subTotal - discountPrice + tax;
+
+  const totalPrice = subTotal;
 
   const removeItem = (index) => {
     const newProducts = [...products];
     newProducts.splice(index, 1);
     setProducts(newProducts);
-  };
-
-  const checkPromoCode = () => {
-    for (let i = 0; i < promotions.length; i++) {
-      if (promoCode === promotions[i].code) {
-        setDiscount(parseFloat(promotions[i].discount.replace("%", "")));
-        return;
-      }
-    }
-
-    alert("Sorry, the Promotional code you entered is not valid!");
   };
 
   return (
@@ -112,26 +93,7 @@ function ShoppingCart() {
                     })}
                   </span>
                 </li>
-                {discount > 0 && (
-                  <li>
-                    Discount{" "}
-                    <span>
-                      {discountPrice.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
-                    </span>
-                  </li>
-                )}
-                <li>
-                  Tax{" "}
-                  <span>
-                    {tax.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    })}
-                  </span>
-                </li>
+
                 <li className="total">
                   Total{" "}
                   <span>
