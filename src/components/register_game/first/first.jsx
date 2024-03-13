@@ -116,12 +116,12 @@ export default function FormPropsTextFields() {
             defaultValue="10"
           />
 
-          <TextField
+          {/** <TextField
             required
             id="outlined-required"
             label="Required Donate for Server 😔"
             defaultValue="0"
-          />
+          />*/}
         </div>
       </Box>
 

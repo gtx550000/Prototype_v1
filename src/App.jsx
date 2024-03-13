@@ -14,6 +14,7 @@ import Gamedetail from "./components/gamedetail/gamedetail";
 import Slideshowgamedetail from "./components/slideshowgamedetail/slideshowgamedetail";
 
 /*11/3/24*/ import Library from "./components/library/library";
+/*13/3/24 */ import Payment from "./components/payment/paymenthome";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -40,6 +41,7 @@ function App() {
             path="/slideshowgamedetail"
             element={<Slideshowgamedetail />}
           ></Route>
+          <Route path="/payment" element={<Payment />}></Route>
         </Routes>
       </div>
     </Router>

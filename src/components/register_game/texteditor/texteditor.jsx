@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
-import JoditEditor from 'jodit-react';
-/*import HTMLReactParser from "html-react-parser";*/
+import { useState, useRef } from "react";
+import JoditEditor from "jodit-react";
+/**/ import HTMLReactParser from "html-react-parser";
 
 function App() {
   const editor = useRef(null);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
 
   return (
     <div>

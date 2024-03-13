@@ -20,6 +20,8 @@ import AlignHorizontalLeftIcon from "@mui/icons-material/AlignHorizontalLeft";
 /*2/3/24 */
 import Collapse from "@mui/material/Collapse";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+/*13/321 */
+import PaymentIcon from "@mui/icons-material/Payment";
 
 export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
   const [isCollapse, setisCollapse] = React.useState(false);
@@ -86,6 +88,19 @@ export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
             <ListItemButton href={`/${text.toLowerCase()}`}>
               <ListItemIcon>
                 <CollectionsBookmarkIcon sx={{ color: "#fff" }} />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      <List>
+        {["Payment"].map((text) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton href={`/${text.toLowerCase()}`}>
+              <ListItemIcon>
+                <PaymentIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
