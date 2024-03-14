@@ -4,7 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../login/logins.css";
 import Instance from "../../axios_main";
 import { useNavigate } from "react-router";
+
+/*14/3/24 */
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Login() {
+  /*14/3/24 */ const notify = () => toast.success("🦄 Welcome!");
   const navigate = useNavigate();
   const [isContainerActive, setContainerActive] = useState(false);
   const [formreg, setformreg] = useState({
@@ -139,7 +145,10 @@ function Login() {
                 onChange={handleInputChanges}
               />
               <a href="/forgot_password">Forget Your Password?</a>
-              <button type="submit">Sign In</button>
+              <button type="submit" onClick={notify}>
+                Sign In
+              </button>
+              <ToastContainer />
               <div>
                 <button>Google</button>
               </div>

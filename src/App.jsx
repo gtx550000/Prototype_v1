@@ -16,6 +16,7 @@ import Slideshowgamedetail from "./components/slideshowgamedetail/slideshowgamed
 /*11/3/24*/ import Library from "./components/library/library";
 /*13/3/24 */ import Payment from "./components/payment/paymenthome";
 /*14/3/24 */ import Admain from "./components/admain/admain";
+import Admain1 from "./components/admain/admain1";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -44,6 +45,7 @@ function App() {
           ></Route>
           <Route path="/payment" element={<Payment />}></Route>
           <Route path="/admain" element={<Admain />}></Route>
+          <Route path="/admain1" element={<Admain1 />}></Route>
         </Routes>
       </div>
     </Router>
