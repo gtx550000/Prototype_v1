@@ -2,12 +2,66 @@ import { useState } from "react";
 import Bgvideo from "../media/VN.mp4";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../login/logins.css";
-
+import Instance from "../../axios_main";
+import { useNavigate } from "react-router";
 function Login() {
+  const navigate = useNavigate();
   const [isContainerActive, setContainerActive] = useState(false);
-
+  const [formreg, setformreg] = useState({
+    name: "",
+    username: "",
+    password: "",
+    tel: "",
+    email: "",
+  });
+  const [formlog, setformlog] = useState({
+    login: "",
+    password: "",
+  });
   const toggleContainer = () => {
     setContainerActive(!isContainerActive);
+  };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformreg((prevData) => ({ ...prevData, [name]: value }));
+  };
+  const handleInputChanges = (e) => {
+    const { name, value } = e.target;
+    setformlog((prevData) => ({ ...prevData, [name]: value }));
+  };
+  const loginsubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await Instance.post("/auth/login", formlog);
+      // Handle success, maybe redirect to login or dashboard
+      console.log(response);
+      if (response.data.token) {
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        navigate("/home");
+      }
+    } catch (error) {
+      // Handle errors
+      console.error(
+        "Error registering user",
+        error.response?.data || error.message
+      );
+    }
+  };
+  const registersubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await Instance.post("/auth/", formreg);
+      // Handle success, maybe redirect to login or dashboard
+    } catch (error) {
+      // Handle errors
+      console.error(
+        "Error registering user",
+        error.response?.data || error.message
+      );
+    }
   };
 
   return (
@@ -22,26 +76,70 @@ function Login() {
           id="container"
         >
           <div className="form-container-login sign-up-login">
-            <form>
+            <form onSubmit={registersubmit}>
               <h1>Create Account</h1>
               <span>or use your email for registration</span>
-              <input type="text" placeholder="Name" />
-              <input type="text" placeholder="User name" required />
-              <input type="tel" placeholder="telephone number" required />
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-              <button>Sign Up</button>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={formreg.name}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                placeholder="User name"
+                required
+                name="username"
+                value={formreg.username}
+                onChange={handleInputChange}
+              />
+              <input
+                type="tel"
+                placeholder="telephone number"
+                required
+                name="tel"
+                value={formreg.tel}
+                onChange={handleInputChange}
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={formreg.email}
+                onChange={handleInputChange}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={formreg.password}
+                onChange={handleInputChange}
+              />
+              <button type="submit">Sign Up</button>
             </form>
           </div>
 
           <div className="form-container-login sign-in-login">
-            <form>
+            <form onSubmit={loginsubmit}>
               <h1>Sign In</h1>
               <span>or use your email password</span>
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input
+                type="text"
+                placeholder="Email"
+                name="login"
+                value={formlog.login}
+                onChange={handleInputChanges}
+              />
+              <input
+                type="text"
+                placeholder="Password"
+                name="password"
+                value={formlog.password}
+                onChange={handleInputChanges}
+              />
               <a href="/forgot_password">Forget Your Password?</a>
-              <button>Sign In</button>
+              <button type="submit">Sign In</button>
               <div>
                 <button>Google</button>
               </div>
