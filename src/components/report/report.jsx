@@ -1,21 +1,25 @@
-import * as React from 'react';
-import { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
+import * as React from "react";
+import { useState } from "react";
+import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
 
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
-import Model from 'react-modal';
+import Model from "react-modal";
 
-import '../report/report.css';
+import "../report/report.css";
+
+const setTimeout = () => {
+  alert("3 seconds has been passed!");
+};
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,19 +33,19 @@ const MenuProps = {
 };
 
 const names = [
-  'System crash',
-  'System cannot log in.',
-  'System cannot purchase products.',
+  "System crash",
+  "System cannot log in.",
+  "System cannot purchase products.",
 
-  'Paid and did not receive the product',
-  'Qr code payment system not showing',
+  "Paid and did not receive the product",
+  "Qr code payment system not showing",
 
-  'The content is too violent.',
-  'Content about sexism',
+  "The content is too violent.",
+  "Content about sexism",
 
-  'Email not available',
-  'Unable to change password',
-  'พี่ T หล่อมากว่าพี่ arm',
+  "Email not available",
+  "Unable to change password",
+  "พี่ T หล่อมากว่าพี่ arm",
 ];
 
 function getStyles(name, personName, theme) {
@@ -54,7 +58,7 @@ function getStyles(name, personName, theme) {
 }
 
 export default function BasicTextFields() {
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -69,7 +73,7 @@ export default function BasicTextFields() {
     } = event;
     setPersonName(
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
+      typeof value === "string" ? value.split(",") : value
     );
   };
 
@@ -111,7 +115,7 @@ export default function BasicTextFields() {
               onChange={handleChange1}
               input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
               renderValue={(selected) => (
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                   {selected.map((value) => (
                     <Chip key={value} label={value} />
                   ))}
@@ -135,7 +139,7 @@ export default function BasicTextFields() {
         <div className="form-control-report">
           <TextField
             fullWidth
-            label="Other details"
+            label="Comment"
             id="outlined-basic"
             variant="outlined"
           />
@@ -143,24 +147,24 @@ export default function BasicTextFields() {
 
         <div className="form-control-report ">
           <Stack direction="row" spacing={1}>
-            <Button variant="contained" color="error">
+            {/** <Button variant="contained" color="error">
               Cancel
-            </Button>
+            </Button>*/}
             <div className="button-report">
               <Button
-                onClick={() => setvisible(true)}
+                /**/ onClick={setTimeout}
                 variant="contained"
                 color="success"
                 type="submit"
               >
-                Success
+                <a href="/home">Success</a>
               </Button>
             </div>
           </Stack>
         </div>
       </div>
 
-      <div>
+      {/** <div>
         <Model isOpen={visible} className="fix_position-report">
           <div className="">
             <h1 className="">Thanks for reporting.</h1>
@@ -175,7 +179,7 @@ export default function BasicTextFields() {
             </Button>
           </div>
         </Model>
-      </div>
+      </div>*/}
     </div>
   );
 }
