@@ -1,36 +1,120 @@
-import React from "react";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Unstable_Grid2";
-
+import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
 import Stack from "@mui/material/Stack";
-
-import "../library/library.css";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
-import EditNoteIcon from "@mui/icons-material/EditNote";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import HistoryIcon from "@mui/icons-material/History";
-
+import { Button } from "@mui/material";
+import { useState, useEffect } from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CardActions from "@mui/material/CardActions";
+import HistoryIcon from "@mui/icons-material/History";
+import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
 
-export default function library() {
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import "../library/library.css";
+import "../text/a-box.css";
+import Card_library from "../card/card-library";
+
+import Instance from "../../axios_main";
+
+export default function Library() {
+  const [select, setSelect] = useState("fav");
+  const [favourite, setFavourite] = useState([]);
+  const [games, setGames] = useState([]);
+  const [items, setItems] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
+  const [subtotals, setSubtotals] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const favoriteResponse = await Instance.get("/favorite/");
+        const favoriteIds = favoriteResponse.data.map((item) => item.gameId);
+        const favoriteGames = await Promise.all(
+          favoriteIds.map(fetchGameDataById)
+        );
+
+        const totalss = favoriteGames.reduce((ac, item) => ac + item.price, 0);
+        setFavourite(favoriteGames);
+
+        setSubtotals(totalss);
+        console.log(items);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+      try {
+        const billResponse = await Instance.get("/bill");
+        const orderIds = billResponse.data.map((item) => item.orderId);
+        const orderedGames = await Promise.all(
+          orderIds.map(fetchOrderDataById)
+        );
+        const totals = orderedGames.reduce((ac, item) => ac + item.price, 0);
+        setGames(orderedGames);
+        const updatedItems = select === "fav" ? favourite : orderedGames;
+        setSubtotal(totals);
+        setItems(updatedItems);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleChangeButton = (value) => {
+    setSelect(value);
+    setItems(value === "fav" ? favourite : games);
+  };
+
+  const fetchGameDataById = async (gameId) => {
+    try {
+      const response = await Instance.get(`/games/${gameId}`);
+      const game = response.data["game"];
+      game.image = game.image.split(" ")[0];
+      return game;
+    } catch (error) {
+      console.error(`Error fetching game data for ID ${gameId}:`, error);
+      throw error;
+    }
+  };
+
+  const fetchOrderDataById = async (orderId) => {
+    try {
+      const response = await Instance.get(`/bill/order/${orderId}`);
+      const order = response.data["Game"];
+      order.image = order.image.split(" ")[0];
+      return order;
+    } catch (error) {
+      console.error(`Error fetching game data for ID ${orderId}:`, error);
+      throw error;
+    }
+  };
   return (
-    <div className="kanit-thin">
-      <Box height={30}>
-        <Box sx={{ display: "flex" }}>
-          <Box component={"main"} sx={{ flexGrow: 1, p: 3 }}>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2}>
-                <Grid xs={8}>
+    <Box>
+      {" "}
+      <div className="a-box aa">
+        <h2>
+          <a>Library</a>
+        </h2>
+      </div>
+      <Box
+        className="container-library"
+        sx={{
+          "@media (min-width: 1000px)": {
+            display: "flex",
+            justifyContent: "center",
+          },
+        }}
+      >
+        <Box className="kanit-thin" height={30}>
+          <Box sx={{ display: "flex" }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+              <Grid container spacing={1}>
+                <Grid xs={12}>
                   <Stack spacing={2} direction={"row"}>
                     <Card
-                      sx={{ minWidth: 24 + "%", height: 140 }}
+                      sx={{ minWidth: 10 + "rem", height: 140 }}
                       className="greadient1-library"
                     >
                       <CardContent>
@@ -38,7 +122,7 @@ export default function library() {
                           <VideogameAssetIcon />
                         </div>
                         <Typography gutterBottom variant="h5" component="div">
-                          500
+                          {games.length}
                         </Typography>
                         <Typography
                           gutterBottom
@@ -48,34 +132,33 @@ export default function library() {
                           Total Game in the Library
                         </Typography>
                       </CardContent>
-
                       <CardActions></CardActions>
                     </Card>
 
                     <Card
-                      sx={{ minWidth: 24 + "%", height: 140 }}
+                      sx={{ minWidth: 10 + "rem", height: 140 }}
                       className="greadient2-library"
                     >
                       <CardContent>
                         <div>
-                          <EditNoteIcon />
+                          <FavoriteIcon />
                         </div>
                         <Typography gutterBottom variant="h5" component="div">
-                          10
+                          {favourite.length}
                         </Typography>
                         <Typography
                           gutterBottom
                           variant="body2"
                           sx={{ color: "#ffff" }}
                         >
-                          Wishlist in the Librar
+                          Wishlist in the Library
                         </Typography>
                       </CardContent>
                       <CardActions></CardActions>
                     </Card>
 
                     <Card
-                      sx={{ minWidth: 24 + "%", height: 140 }}
+                      sx={{ minWidth: 10 + "rem", height: 140 }}
                       className="greadient3-library"
                     >
                       <CardContent>
@@ -83,21 +166,21 @@ export default function library() {
                           <CloudDownloadIcon />
                         </div>
                         <Typography gutterBottom variant="h5" component="div">
-                          3
+                          {subtotal}
                         </Typography>
                         <Typography
                           gutterBottom
                           variant="body2"
                           sx={{ color: "#ffff" }}
                         >
-                          Download game in the Librar
+                          All games price
                         </Typography>
                       </CardContent>
                       <CardActions></CardActions>
                     </Card>
 
                     <Card
-                      sx={{ minWidth: 23.5 + "%", height: 140 }}
+                      sx={{ minWidth: 10 + "rem", height: 140 }}
                       className="greadient4-library"
                     >
                       <CardContent>
@@ -105,195 +188,66 @@ export default function library() {
                           <HistoryIcon />
                         </div>
                         <Typography gutterBottom variant="h5" component="div">
-                          1
+                          {subtotals}
                         </Typography>
                         <Typography
                           gutterBottom
                           variant="body2"
                           sx={{ color: "#ffff" }}
                         >
-                          History Dowload game
+                          Price all wishlist game
                         </Typography>
                       </CardContent>
                       <CardActions></CardActions>
                     </Card>
                   </Stack>
                 </Grid>
-
-                <Grid xs={4}>
-                  <Stack spacing={2}>
-                    <Card sx={{ maxWidth: 345 }}>
-                      <CardContent>
-                        <Stack spacing={2} direction={"row"}>
-                          <div className="iconstyle-library">
-                            <AccountBalanceWalletIcon />
-                          </div>
-
-                          <div className="paddingall-library">
-                            <span className="pricetitle-library">
-                              1,000 THB
-                            </span>
-                            <br />
-                            <span className="pricesubtitle-library">Total</span>
-                          </div>
-                        </Stack>
-                      </CardContent>
-                    </Card>
-
-                    <Card sx={{ maxWidth: 345 }}>
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          Lizard
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Stack>
-                </Grid>
-
-                <Grid xs={4}>
-                  <Card
-                    sx={{ height: 60 + "vh", width: 135.5 + "vh" }}
-                    className="greadient5-library"
-                  >
-                    <CardContent>
-                      <div class="">
-                        <div class="">
-                          <div class="">
-                            <h5 class="">Latest transactions</h5>
-                            <div class="card-body">
-                              <div class="table-responsive">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Order</th>
-                                      <th scope="col">Product</th>
-                                      <th scope="col">Customer</th>
-                                      <th scope="col">Total</th>
-                                      <th scope="col">Date</th>
-                                      <th scope="col"></th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <th scope="row">17371705</th>
-                                      <td>
-                                        Volt Premium Bootstrap 5 Dashboard
-                                      </td>
-                                      <td>johndoe@gmail.com</td>
-                                      <td>€61.11</td>
-                                      <td>Aug 31 2020</td>
-                                      <td>
-                                        <a
-                                          href="#"
-                                          class="btn btn-sm btn-primary"
-                                        >
-                                          View
-                                        </a>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">17370540</th>
-                                      <td>
-                                        Pixel Pro Premium Bootstrap UI Kit
-                                      </td>
-                                      <td>jacob.monroe@company.com</td>
-                                      <td>$153.11</td>
-                                      <td>Aug 28 2020</td>
-                                      <td>
-                                        <a
-                                          href="#"
-                                          class="btn btn-sm btn-primary"
-                                        >
-                                          View
-                                        </a>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">17371705</th>
-                                      <td>
-                                        Volt Premium Bootstrap 5 Dashboard
-                                      </td>
-                                      <td>johndoe@gmail.com</td>
-                                      <td>€61.11</td>
-                                      <td>Aug 31 2020</td>
-                                      <td>
-                                        <a
-                                          href="#"
-                                          class="btn btn-sm btn-primary"
-                                        >
-                                          View
-                                        </a>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">17370540</th>
-                                      <td>
-                                        Pixel Pro Premium Bootstrap UI Kit
-                                      </td>
-                                      <td>jacob.monroe@company.com</td>
-                                      <td>$153.11</td>
-                                      <td>Aug 28 2020</td>
-                                      <td>
-                                        <a
-                                          href="#"
-                                          class="btn btn-sm btn-primary"
-                                        >
-                                          View
-                                        </a>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">17371705</th>
-                                      <td>
-                                        Volt Premium Bootstrap 5 Dashboard
-                                      </td>
-                                      <td>johndoe@gmail.com</td>
-                                      <td>€61.11</td>
-                                      <td>Aug 31 2020</td>
-                                      <td>
-                                        <a
-                                          href="#"
-                                          class="btn btn-sm btn-primary"
-                                        >
-                                          View
-                                        </a>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">17370540</th>
-                                      <td>
-                                        Pixel Pro Premium Bootstrap UI Kit
-                                      </td>
-                                      <td>jacob.monroe@company.com</td>
-                                      <td>$153.11</td>
-                                      <td>Aug 28 2020</td>
-                                      <td>
-                                        <a
-                                          href="#"
-                                          class="btn btn-sm btn-primary"
-                                        >
-                                          View
-                                        </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              <a href="#" class="btn btn-library">
-                                View all
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Grid>
               </Grid>
             </Box>
           </Box>
         </Box>
+      </Box>{" "}
+      <Box>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            marginTop: "2rem",
+            justifyContent: "center",
+          }}
+        >
+          <Button
+            color="error"
+            variant={select === "fav" ? "contained" : "outlined"}
+            onClick={() => handleChangeButton("fav")}
+          >
+            <FavoriteIcon />
+            <Typography sx={{ marginLeft: "0.5rem" }}>Favorite</Typography>
+          </Button>
+          <Button
+            color="error"
+            variant={select === "game" ? "contained" : "outlined"}
+            onClick={() => handleChangeButton("game")}
+          >
+            <VideogameAssetIcon />
+            <Typography sx={{ marginLeft: "0.5rem" }}>Game</Typography>
+          </Button>
+        </Stack>
       </Box>
-    </div>
+      <Box
+        sx={{
+          maxWidth: "800px",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "2rem",
+          "@media (min-width: 1100px)": {
+            marginLeft: "18rem",
+          },
+        }}
+      >
+        <Card_library items={items} />
+      </Box>
+    </Box>
   );
 }
